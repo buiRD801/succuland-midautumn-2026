@@ -78,7 +78,7 @@ nav.scrolled{
 }
 .hero-bg{
   position:absolute;inset:0;
-  background:url('hero-photo.jpg') center/cover no-repeat;
+  background:url('hero-bg.jpg') center/cover no-repeat;
   transform:scale(1.1);
   animation:hzoom 18s ease forwards;
   filter:brightness(.45) saturate(.7);
@@ -710,7 +710,7 @@ footer{background:var(--navy2);padding:4.5rem 5rem 2.5rem;}
       <div class="mag-wrap"><button class="btn-dk" data-mag>加 LINE 即時洽詢</button></div>
       <div class="mag-wrap"><button class="btn-od" data-mag>進入網路商店</button></div>
     </div>
-  </div>
+  </div><!-- /cta-l -->
   <div class="rev d2">
     <div class="custom-list">
       <div class="ci">
@@ -808,13 +808,14 @@ window.addEventListener('scroll',()=>{
   const rect=panels.getBoundingClientRect();
   const total=panels.offsetHeight-window.innerHeight;
   const progress=Math.max(0,Math.min(1,-rect.top/total));
-  const idx=Math.min(3,Math.floor(progress*4.2));
+  const idx=Math.min(3,Math.floor(progress*4));
   showPanel(idx);
   const inStory=rect.top<0&&rect.bottom>window.innerHeight;
   sdotsBox.classList.toggle('show',inStory);
 });
 dots.forEach(d=>{
   d.addEventListener('click',()=>{
+    if(window.innerWidth<=900)return;
     const i=+d.dataset.i;
     const rect=panels.getBoundingClientRect();
     const total=panels.offsetHeight-window.innerHeight;
